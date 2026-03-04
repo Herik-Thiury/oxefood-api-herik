@@ -10,17 +10,17 @@ import jakarta.transaction.Transactional;
 @Service
 public class ProdutoService {
 
-   @Autowired
-   private ProdutoRepository repository;
+    @Autowired
+    private ProdutoRepository repository;
 
-   @Transactional
-   public Produto save(Produto produto) {
-       produto.setHabilitado(Boolean.TRUE);
-       return repository.save(produto);
-   }
+    @Transactional
+    public Produto save(Produto produto) {
+        produto.setHabilitado(Boolean.TRUE);
+        return repository.save(produto);
+    }
 
-   public List<Produto> listarTodos() {
-  
+    public List<Produto> listarTodos() {
+
         return repository.findAll();
     }
 

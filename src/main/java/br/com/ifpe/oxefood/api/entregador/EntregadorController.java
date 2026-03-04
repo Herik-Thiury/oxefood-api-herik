@@ -39,5 +39,6 @@ public class EntregadorController {
     public Entregador obterPorID(@PathVariable Long id) {
         return entregadorService.obterPorID(id);
     }
+    
 
 }
