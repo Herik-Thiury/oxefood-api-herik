@@ -5,11 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @SpringBootApplication
-@EnableJpaAuditing
+@EnableJpaAuditing 
 public class OxefoodApiHerikApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(OxefoodApiHerikApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(OxefoodApiHerikApplication.class, args);
+    }
 
 }
