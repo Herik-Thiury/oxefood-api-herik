@@ -16,9 +16,9 @@ public class ProdutoService {
 
     @Transactional
     public Produto save(Produto produto) {
-
-        if (produto.getValorUnitario() < 10) {
-            throw new ProdutoException(ProdutoException.MSG_VALOR_MINIMO_PRODUTO);
+        
+        if (produto.getValorUnitario() < 20 || produto.getValorUnitario() > 100) {
+            throw new ProdutoException(ProdutoException.MSG_VALOR_INVALIDO_PRODUTO);
         }
 
         produto.setHabilitado(Boolean.TRUE);
