@@ -15,6 +15,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ProdutoRequest {
 
+   private Long idCategoria; 
+
    @NotBlank(message = "O Título é de preenchimento obrigatório")
    @Length(max = 100, message = "O Título deverá ter no máximo {max} caracteres")
    private String titulo;

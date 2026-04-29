@@ -1,6 +1,12 @@
 package br.com.ifpe.oxefood.modelo.cliente;
 
 import java.time.LocalDate;
+import java.util.List;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 
 import org.hibernate.annotations.SQLRestriction;
 
@@ -39,5 +45,9 @@ public class Cliente extends EntidadeAuditavel {
 
    @Column
    private String foneFixo;
+
+   @OneToMany(mappedBy = "cliente", orphanRemoval = true, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+   @Fetch(FetchMode.SUBSELECT)
+   private List<EnderecoCliente> enderecos;
 
 }

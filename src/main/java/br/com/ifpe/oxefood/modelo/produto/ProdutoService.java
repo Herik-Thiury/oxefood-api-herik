@@ -17,6 +17,7 @@ public class ProdutoService {
     @Transactional
     public Produto save(Produto produto) {
         
+        // Regra de Negócio: Bloqueia valores fora do intervalo 20-100 na criação
         if (produto.getValorUnitario() < 20 || produto.getValorUnitario() > 100) {
             throw new ProdutoException(ProdutoException.MSG_VALOR_INVALIDO_PRODUTO);
         }
@@ -26,18 +27,23 @@ public class ProdutoService {
     }
 
     public List<Produto> listarTodos() {
-
         return repository.findAll();
     }
 
     public Produto obterPorID(Long id) {
-
         return repository.findById(id).get();
     }
 
     @Transactional
     public void update(Long id, Produto produtoAlterado) {
+        
+        if (produtoAlterado.getValorUnitario() < 20 || produtoAlterado.getValorUnitario() > 100) {
+            throw new ProdutoException(ProdutoException.MSG_VALOR_INVALIDO_PRODUTO);
+        }
+
         Produto produto = repository.findById(id).get();
+
+        produto.setCategoria(produtoAlterado.getCategoria());
 
         produto.setTitulo(produtoAlterado.getTitulo());
         produto.setCodigo(produtoAlterado.getCodigo());
